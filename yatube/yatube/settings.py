@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-x = 10
+NUMB_PUBL = 10
 
 
 # Application definition
