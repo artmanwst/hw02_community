@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+
 """
 Django settings for yatube project.
 
@@ -30,12 +31,17 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 NUMB_PUBL = 10
+LOGIN_URL='users:login'
+LOGIN_REDIRECT_URL='posts:index'
 
+EMAIL_BACKEND='django.core.mail.backends.filebased.EmailBackend'
 
-# Application definition
+EMAIL_FILE_PATH=os.path.join(BASE_DIR,'sent_emails')
 
 INSTALLED_APPS = [
+    'core.apps.CoreConfig',
     'posts.apps.PostsConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
@@ -108,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 

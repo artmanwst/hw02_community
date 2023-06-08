@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
 User = get_user_model()
 
 
@@ -20,3 +19,7 @@ class Post(models. Model):
                                related_name='posts')
     group = models.ForeignKey(Group, blank=True, null=True,
                               on_delete=models.SET_NULL)
+
+    def __str__(self):
+        # выводим текст поста 
+        return self.text 
